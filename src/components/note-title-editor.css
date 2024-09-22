@@ -1,0 +1,30 @@
+.note-content-editor {
+  margin-top: 20px;
+}
+
+.note-textarea {
+  width: 100%;
+  height: 200px;
+}
+
+.note-saving-status {
+  margin-top: 10px;
+}
+
+.note-title-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.note-title-button.save-button i {
+  color: green;
+  font-size: 20px;
+}
+
+.note-title-button.cancel-button i {
+  color: red;
+  font-size: 20px;
+}

@@ -1,0 +1,34 @@
+.fixed-height-card {
+  height: 250px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; 
+  max-height: 6em;
+  text-overflow: ellipsis;
+}
+
+.button-group {
+  margin-top: auto;
+}
+
+.btn {
+  font-size: 0.8rem;
+}

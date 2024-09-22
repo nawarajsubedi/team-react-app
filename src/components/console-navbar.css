@@ -1,0 +1,10 @@
+@import "navbar.css";
+
+.nav-avatar-dropdown {
+  border-style: hidden;
+  background-color: transparent;
+}
+
+.main-content {
+  margin-top: 20px !important; 
+}

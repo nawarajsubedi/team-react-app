@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Changed from es5 to es6 for better modern JavaScript support
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext" // Ensures compatibility with the latest features
+    ],
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext", // Ensures compatibility with modern modules
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx" // Correct setting for modern React JSX compilation
+  },
+  "include": ["src/**/*"]
+}

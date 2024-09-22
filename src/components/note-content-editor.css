@@ -1,0 +1,36 @@
+.note-title-editor {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note-title-input {
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.note-title-button {
+    margin-left: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.note-title-button i {
+    font-size: 20px;
+}
+
+.note-title {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.saving-indicator {
+    margin-left: 10px;
+}
