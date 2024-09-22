@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Random Team Generator Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objective
+Create a web application that generates random teams from a list of players based on their skill levels.
 
 ## Available Scripts
 
@@ -15,6 +16,9 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm test`
+
+## create a .env file
+Replace `REACT_APP_API_URL=http://localhost:5001`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
