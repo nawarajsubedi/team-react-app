@@ -1,50 +1,107 @@
-# Random Team Generator Application
+# Random Team Generator (frontend)
 
-## Objective
-Create a web application that generates random teams from a list of players based on their skill levels.
+A web app that builds random, balanced teams from a list of players based on their skill levels.
+Users sign up and log in, manage their players, generate teams and share a link to a generated team.
 
-## Available Scripts
+It needs the API from **[team-flask-app](https://github.com/nawarajsubedi/team-flask-app)** for login and data.
+The UI starts without it, but you can't log in.
 
-In the project directory, you can run:
+## Tech stack
 
-### `npm start`
+- React 18 + TypeScript (Create React App / `react-scripts` 5)
+- React Bootstrap 5
+- React Router 6
+- React Hook Form
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Requirement | Version | Notes |
+|---|---|---|
+| **OS** | **Linux** (Ubuntu / Debian) | Use Linux to install, build and run. On Windows, use WSL 2 (Ubuntu); see [Other operating systems](#other-operating-systems) |
+| Node.js | 18 or newer | Tested on 20 and 26. Install with [nvm](https://github.com/nvm-sh/nvm): `nvm install 20` |
+| Yarn | 1.x (classic) | Install with `npm install -g yarn` |
+| Backend | team-flask-app | Expected at <http://localhost:5001> |
 
-### `npm test`
+### Tested on
 
-## create a .env file
-Replace `REACT_APP_API_URL=http://localhost:5001`
+| OS | Node.js | Result |
+|---|---|---|
+| **Linux** (Debian 12, Docker `node:20`) | 20.20 | Builds ✅ |
+| macOS 26 (Apple Silicon) | 26.12 | Builds and starts ✅ |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting started
 
-### `npm run build`
+### 1. Clone and install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/nawarajsubedi/team-react-app.git
+cd team-react-app
+npm install -g yarn      # skip if you already have Yarn 1
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Use Yarn: `yarn.lock` matches `package.json`, but `package-lock.json` is out of date, so `npm ci` fails.
+> `npm install` also works, but it rewrites `package-lock.json`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Check the API URL
 
-### `npm run eject`
+The repo already includes a `.env` file:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+REACT_APP_API_URL=http://localhost:5001
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Change it if your backend runs somewhere else. Requests go to `<REACT_APP_API_URL>/api/v1/...`.
+Restart `yarn start` after editing `.env`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Start the backend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Follow the README in [team-flask-app](https://github.com/nawarajsubedi/team-flask-app). It runs with
+`flask --app main --debug run --port 5001`.
 
-## Learn More
+### 4. Run the frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open <http://localhost:3000>.
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `yarn start` | Dev server with hot reload on port 3000 |
+| `yarn build` | Production build into `build/` |
+| `yarn test` | Jest tests in watch mode |
+
+To run the dev server on another port: `PORT=3001 yarn start`.
+
+## Other operating systems
+
+The supported OS is **Linux**. The commands above were written and tested for a Linux shell.
+
+- **Windows**: install [WSL 2](https://learn.microsoft.com/windows/wsl/install) with Ubuntu, open the Ubuntu terminal, and follow the Linux steps exactly.
+- **macOS**: the same commands work in Terminal (tested on macOS 26).
+
+## Pages
+
+| Path | Page |
+|---|---|
+| `/login`, `/signup` | Authentication |
+| `/console/players` | Manage players and skill levels |
+| `/console/team-generation` | Generate teams |
+| `/console/teams` | Saved teams |
+| `/teams/:teamname/:base64` | Shareable generated team |
+
+## Project structure
+
+```
+src/
+  app/App.tsx          Routes
+  pages/               Login, signup, players, teams, team generation
+  components/          Navbars, sidebar, cards, alerts
+  services/            API calls (api.ts adds the auth token)
+  hooks/               Auth context and form helpers
+  common/              Constants (API_URL) and types
+```
